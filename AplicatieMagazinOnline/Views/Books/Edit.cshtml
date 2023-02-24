@@ -1,0 +1,111 @@
+﻿@model AplicatieMagazinOnline.Models.Book
+
+<h2 class="text-center mt-5">Editare carte</h2>
+<br />
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-3">
+            @using (Html.BeginForm(actionName: "Edit", controllerName: "Books",
+            method: FormMethod.Post,
+            routeValues: new { id = Model.BookID }))
+            {
+                @* @Html.HiddenFor(m => m.BookID) *@
+
+
+                @Html.Label("Title", "Titlu Carte")
+                <br />
+                @Html.EditorFor(m => m.Title, new { htmlAttributes = new { @class = "form-control" } })
+
+                @Html.ValidationMessageFor(m => m.Title, null, new { @class = "text-danger" })
+                <br />
+
+                @Html.Label("Image", "Imagine Carte")
+                <br />
+                @Html.EditorFor(m => m.Image, new { htmlAttributes = new { @class = "form-control" } })
+
+                @Html.ValidationMessageFor(m => m.Image, null, new { @class = "text-danger" })
+                <br />
+
+                
+                <br />
+
+                @Html.Label("Price", "Pret Carte")
+                <br />
+                @Html.Editor("Price", new { htmlAttributes = new { @class = "form-control" } })
+
+                @Html.ValidationMessageFor(m => m.Price, null, new { @class = "text-danger" })
+                <br />
+
+                <br />
+
+                @Html.Label("Description", "Descriere Carte")
+                <br />
+                @Html.TextArea("Description", Model.Description, new { @class = "form-control summernote"})
+
+                @Html.ValidationMessageFor(m => m.Description, null, new { @class = "text-danger" })
+                <br />
+
+
+
+                <br />
+
+                   <br /> 
+
+                @Html.Label("PublishedDate", "Data Publicarii")
+                <br />
+                @Html.Editor("PublishedDate", new { htmlAttributes = new { @class = "form-control" } })
+
+                @Html.ValidationMessageFor(m => m.PublishedDate, null, new { @class = "text-danger" })
+                <br />
+                <br />
+
+                @Html.Label("Author", "Autor Carte")
+                <br />
+                @Html.Editor("Author", new { htmlAttributes = new { @class = "form-control" } })
+
+                @Html.ValidationMessageFor(m => m.Author, null, new { @class = "text-danger" })
+                <br />
+
+                <br />
+
+                @Html.Label("NoPages", "Numarul de pagini al cartii")
+                <br />
+                @Html.Editor("NoPages", new { htmlAttributes = new { @class = "form-control" } })
+
+                @Html.ValidationMessageFor(m => m.NoPages, null, new { @class = "text-danger" })
+                <br />
+
+
+                <br />
+
+                @Html.Label("Rating", "Rating Carte")
+                <br />
+                @Html.Editor("Rating", new { htmlAttributes = new { @class = "form-control" } })
+
+                @Html.ValidationMessageFor(m => m.Rating, null, new { @class = "text-danger" })
+                <br />
+         
+             
+             
+
+                <br />
+
+                <label>Selectati categoria</label>
+                @Html.DropDownListFor(m => m.CategoryID,
+                new SelectList(Model.Categ, "Value", "Text"),
+                "Selectati categoria", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.CategoryID, null, new { @class = "text-danger" })
+                <br />
+
+                <br />
+
+                <button class="btn btn-sm btn-success" type="submit">Modifica carte</button>
+
+            }
+        </div>
+    </div>
+</div>
+
+
+
+

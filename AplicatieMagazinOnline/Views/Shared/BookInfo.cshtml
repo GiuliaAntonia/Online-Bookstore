@@ -1,0 +1,74 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model AplicatieMagazinOnline.Models.Book
+
+
+
+    <div class="card-body">
+        <h5 class="card-title">@Model.Title</h5>
+        <p class="card-text">@Html.Raw(Model.Author) </p>
+        <div class="card-text">Pret: @Html.Raw(Model.Price)</div>
+        <div class="card-text">Rating: @Html.Raw(Model.Rating) / 5</div>
+    <div>
+        @if (@Model.Rating == 1)
+        {
+            <img src="/images/OneStar.jpg" style="width:100px">
+        }
+        @if (@Model.Rating == 2)
+        {
+            <img src="/images/TwoStar.jpg" style="width:100px">
+        }
+        @if (@Model.Rating == 3)
+        {
+            <img src="/images/ThreeStar.jpg" style="width:100px">
+        }
+        @if (Model.Rating == 4)
+        {
+            <img src="/images/FourStar.jpg" style="width:100px">
+        }
+        @if (@Model.Rating == 5)
+        {
+            <img src="/images/FiveStar.jpg" style="width:100px">
+        }
+    </div>
+       
+    </div>
+    
+
+
+
+
+
+@*
+<div class="card-body" style="width: 45rem; height:20rem;">
+    <div class="d-flex d-flex justify-content-evenly">
+    <div class="d-flex flex-column">
+    <img src="/images/@Model.Image" alt="Poza" style="height:17rem; width:13rem;"/>
+    </div>
+    <div class="d-flex flex-column px-3"  style="width:34rem">
+    <h3 class="card-title  py-3  rounded-2">@Model.Title</h3>
+     <div class="card-text">Categorie: @Model.Category.CategoryName</div>
+    <div class="card-text">Decriere: @Html.Raw(Model.Description)</div>
+    <div class="card-text">Autor: @Html.Raw(Model.Author)</div>
+    <div class="card-text">Pret: @Html.Raw(Model.Price)</div>
+    <div class="card-text">Numar de pagini: @Html.Raw(Model.NoPages)</div>
+    <div class="card-text">Rating: @Html.Raw(Model.Rating) / 5</div>
+    <div class="card-text">Data publicarii: @Html.Raw(Model.PublishedDate)</div>
+    </div>
+    </div>*@
+@*    <div class="d-flex justify-content-between flex-row mt-5">
+
+        <div><i class="bi bi-globe"></i> @Model.Category.CategoryName</div>
+
+        <div><i class="bi bi-person"></i> @Model.User.UserName</div>
+
+    </div>*@
+
+
+
+
+

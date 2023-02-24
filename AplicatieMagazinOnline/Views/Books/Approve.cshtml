@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "Aproba Carti";
+}
+
+@if (ViewBag.Message != null)
+{
+    <h2 class="alert-success p-3 rounded-3 text-center mb-5">@ViewBag.Message</h2>
+}
+
+<section class="bg-light py-10">
+    <div class="container">
+
+       
+        <br />
+        <div class="d-flex align-items-center justify-content-between">
+            <div>
+                <a class="text-arrow-icon small" href="/Books/Index"><i class="glyphicon glyphicon-ok-circle"></i> &nbsp;Aproba Carti</a>
+            </div>
+        </div>
+        
+
+        @foreach (AplicatieMagazinOnline.Models.Book book in ViewBag.Books)
+        {
+            if (!book.Approved)
+            {
+                <p>Carti</p>
+            
+                <div class="card post-preview post-preview-featured lift mb-5">
+                    <div class="row no-gutters">
+                        <div class="col-lg-5">
+                            <a href="/Books/Show/@book.BookID">
+                            <img src="/images/@book.Image" class="card-img-top" style="height:16rem;" alt="Poza" />
+                                <div class="card-body">
+                                    @Html.Partial("BookInfo", book )
+                                </div>
+
+                        </a>
+                        </div>
+                       <div class="col-lg-7">
+                            <div class="card-body">
+                                <div class="pb-5">
+                                    @if (User.IsInRole("Editor") || User.IsInRole("Admin"))
+                                    {
+                                        <form class="float-right" method="post" action="/Books/Delete/@book.BookID">
+                                            <a class="btn btn-success btn-sm" href="/Books/Edit/@book.BookID"><i class="glyphicon glyphicon-edit"></i> &nbsp;Editare</a>
+                                            &nbsp;&nbsp;<button type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i> &nbsp;Sterge carte</button>
+                                        </form>
+                                    }
+                                    <a class="text-dark" href="/Books/Show/@book.BookID"><h1>@book.Title</h1></a>
+
+                                   @* <p>@book.Description</p>
+                                    <span><i class="glyphicon glyphicon-bitcoin"></i> &nbsp;Pret: @book.Price lei</span>
+                                    <br /><span><i class="glyphicon glyphicon-globe"></i> &nbsp;Categorie: @book.Category.CategoryName</span>*@
+                                </div>
+                                <div class=" row">
+                                    <div class="col-md-6">
+                                        <button type="submit" class="btn btn-success btn-sm" href="/Books/Show/@book.BookID">Vizualizare &nbsp;</button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <form class="float-right" method="post" action="/Books/Approve/@book.BookID">
+                                            <button type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-ok"></i> &nbsp;Aproba carte</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        }
+        }
+        <br />
+    </div>
+</section>

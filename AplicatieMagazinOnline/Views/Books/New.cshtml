@@ -1,0 +1,109 @@
+﻿@model AplicatieMagazinOnline.Models.Book
+
+<h2 class="text-center mt-5">Adaugare carte</h2>
+<br />
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-3">
+            @using (Html.BeginForm(actionName: "New", controllerName: "Books",
+            method: FormMethod.Post))
+           
+            {
+
+               @* @Html.ValidationSummary(false, "", new { @class = "text-danger" })*@
+
+                @Html.Label("Title", "Titlu Carte")
+                <br />
+               
+                @Html.TextBox("Title", null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Title,"", new { @class = "text-danger" })
+                <br />
+
+                @Html.Label("Image", "Imagine Carte")
+                <br />
+                @Html.TextBox("Image", null, new { @class = "form-control" })
+               
+
+                @Html.ValidationMessageFor(m => m.Image, "", new { @class = "text-danger" })
+                <br />
+
+
+                <br />
+
+                @Html.Label("Price", "Pret Carte")
+                <br />
+                @Html.TextBox("Price", null, new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(m => m.Price, null, new { @class = "text-danger" })
+                <br />
+                 
+
+
+                <br />
+
+                @Html.Label("Description", "Descriere Carte")
+                <br />
+                @Html.TextArea("Description", null, new { @class = "summernote" })
+              
+
+                @Html.ValidationMessage("Description", null, new { @class = "text-danger" })
+                <br />
+
+                <br />
+
+                @Html.Label("PublishedDate", "Data Publicarii")
+                <br />
+                @Html.TextBox("PublishedDate", null, new { @class = "form-control" })
+               
+                @Html.ValidationMessageFor(m => m.PublishedDate, "", new { @class = "text-danger" })
+                <br />
+                <br />
+
+                @Html.Label("Author", "Autor Carte")
+                <br />
+                @Html.TextBox("Author", null, new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(m => m.Author, "", new { @class = "text-danger" })
+                <br />
+
+                <br />
+
+                @Html.Label("NoPages", "Numarul de pagini al cartii")
+                <br />
+                @Html.TextBox("NoPages", null, new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(m => m.NoPages, "", new { @class = "text-danger" })
+                <br />
+
+
+                <br />
+
+                @Html.Label("Rating", "Rating Carte")
+                <br />
+                @Html.TextBox("Rating", null, new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(m => m.Rating, "", new { @class = "text-danger" })
+                <br />
+
+
+
+
+                <br />
+
+                <label>Selectati categoria</label>
+                @Html.DropDownListFor(m => m.CategoryID,
+            new SelectList(Model.Categ, "Value", "Text"),
+            "Selectati categoria", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.CategoryID, null, new { @class = "text-danger" })
+                <br /><br />
+
+                <button class="btn btn-sm btn-success" type="submit">Adauga carte</button>
+
+            }
+        </div>
+    </div>
+</div>
+
+
+
+
