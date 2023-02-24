@@ -1,6 +1,6 @@
 # 📚 Online-Bookstore
 Web application using ASP.NET Core MVC that features:
-* role-based authentication system with four types of user: admin, collaborator, registered user, unregistered user
+* role-based authentication system with four types of users: admin, collaborator, registered user, unregistered user
 * the collaborator can add books in the store by sending additional requests to the admin who can aprrove or reject them. After the aproval the books can be viewed in the store
 * books are part of categories (dynamically created). The admin is the only one who can create, read, update, delete on categories
 * a book has a title, picture, price, rating and reviews from users
